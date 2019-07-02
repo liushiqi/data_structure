@@ -1,0 +1,152 @@
+\documentclass[11pt]{article}
+
+\usepackage[headheight=14pt,a4paper]{geometry}
+\geometry{left=2.0cm,right=2.0cm,top=2.5cm,bottom=2.5cm}
+
+\usepackage[UTF8]{ctex}
+\usepackage{tikz}
+\usepackage{amsfonts,graphicx,amssymb,bm,amsthm}
+\usepackage{algorithm,algorithmicx}
+\usepackage[noend]{algpseudocode}
+\usepackage{fancyhdr}
+\usepackage[fleqn]{amsmath}
+\usepackage{listings}
+\usepackage{fontspec}
+\setmonofont{Fira Code}
+\setCJKfamilyfont{boldkaishu}{FZCuKaiS-R-GB}
+
+\newenvironment{solution}{{\noindent\hskip 2em \bf 解 \quad}}
+
+\renewenvironment{proof}{{\noindent\hskip 2em \bf 证明 \quad}}{\hfill$\qed$\par\vskip1em}
+\newenvironment{proofs}[1]{{\noindent\hskip 2em \bf #1 \quad}}{\hfill$\qed$\par\vskip1em}
+
+\begin{document}
+
+\pagestyle{fancy}
+\rhead{\kaishu 数据结构}
+
+\begin{center}
+  {\LARGE{\bf{数据结构作业}}}\\
+  {\large{\bf{第一次}}}\\
+\end{center}
+
+\begin{flushright}
+  \begin{kaishu}
+    姓名：刘士祺 \\
+    学号：2017K8009929046 \\
+  \end{kaishu}
+\end{flushright}
+
+\begin{enumerate}
+  \item[1.] 习题1-8
+    \begin{enumerate}
+      \item [(1)] $n - 1$
+      \item [(2)] $n - 1$
+      \item [(3)] $n - 1$
+      \item [(4)] $\frac{n(n + 1)}{2}$
+      \item [(5)] $\frac{(n + 2)(n + 1)n}{6}$
+      \item [(6)] $\lfloor \frac{n - 1}{2} \rfloor + 1$
+      \item [(7)] $\lfloor \sqrt{n} \rfloor$
+      \item [(8)] $100$
+    \end{enumerate}
+
+  \item[2.] 习题1-9 \\
+    \begin{solution}
+      时间复杂度为$O(\log(n))$, $n = \log_2\left(\frac{i}{4}\right)$
+    \end{solution}
+
+  \item[3.] 习题1-12
+    \begin{enumerate}
+      \item [(1)] 正确
+      \item [(2)] 不正确
+      \item [(3)] 不正确
+      \item [(4)] 正确
+      \item [(5)] 不正确
+    \end{enumerate}
+
+  \item[4.] 习题2-4
+    \begin{enumerate}
+      \item [(1)] \input{2-4-1.tex}
+      \item [(2)] \input{2-4-2.tex}
+      \item [(3)] \input{2-4-3.tex}
+      \item [(4)] \input{2-4-4.tex}
+      \item [(5)] \input{2-4-5.tex}
+      \item [(6)] \input{2-4-6.tex}
+      \item [(7)] \input{2-4-7.tex}
+    \end{enumerate}
+    
+  \item[5.] 习题2-5 \\
+    \begin{solution}
+      第一行执行完后： \\
+      \input{2-5-1.tex} \\
+      第六行执行完后： \\
+      \input{2-5-2.tex} \\
+      第七行执行完后： \\
+      \input{2-5-3.tex} \\
+      第八行执行完后： \\
+      \input{2-5-4.tex}
+    \end{solution}
+    
+  \item[6.] 习题2-9
+    \begin{enumerate}
+      \item [(1)] 将链表的头节点改放于链表尾部。
+      \item [(2)] 将链表在$pa$与$pb$前切开，连接为两个单循环链表。
+    \end{enumerate}
+    
+  \item[7.] 习题3-3 \\
+    \begin{solution}
+      stack
+    \end{solution}
+    
+  \item[8.] 习题3-7 \\
+    \begin{solution} 此处用\%表示栈底。设$B \times C = G, G / D = H， A - H = I， E^F = J， I + J = K$ \\
+      \begin{tabular}{|c|l|l|r|}
+        \hline 步骤 & OPTR栈 & OPND栈 &               剩余字符串                           \\
+        \hline   1  & \% & \% & $\underline{A} - B \times C / D + E \uparrow F$           \\
+        \hline   2  & \%\ A & \% & $\underline{-} B \times C / D + E \uparrow F$          \\
+        \hline   3  & \%\ A & \%\ - & $\underline{B} \times C / D + E \uparrow F$         \\
+        \hline   4  & \%\ A\ B  & \%\ - & $\underline{\times} C / D + E \uparrow F$       \\
+        \hline   5  & \%\ A\ B  & \%\ - $\times$ & $\underline{C} / D + E \uparrow F$     \\
+        \hline   6  & \%\ A\ B\ C & \%\ - $\times$ & $\underline{/} D + E \uparrow F$     \\
+        \hline   7  & \%\ A\ G & \%\ - & $\underline{/} D + E \uparrow F$                 \\
+        \hline   8  & \%\ A\ G & \%\ -\ / & $\underline{D} + E \uparrow F$                \\
+        \hline   9  & \%\ A\ G\ D & \%\ -\ / & $\underline{+} E \uparrow F$               \\
+        \hline   10 & \%\ I & \% & $\underline{+} E \uparrow F$                           \\
+        \hline   11 & \%\ I & \%\ + & $\underline{E} \uparrow F$                          \\
+        \hline   12 & \%\ I\ E & \%\ + & $\underline{\uparrow} F$                         \\
+        \hline   13 & \%\ I\ E & \%\ +\ $\uparrow$ & $\underline{F}$                      \\
+        \hline   14 & \%\ I\ E\ F & \%\ +\ $\uparrow$ &                                   \\
+        \hline   15 & \%\ I\ J & \%\ + &                                                  \\
+        \hline   16 & \%\ K & \% &                                                        \\
+        \hline
+      \end{tabular}
+    \end{solution}
+    
+  \item[9.] 习题3-10 \\
+    \begin{solution}
+      所求的函数为：
+      \begin{lstlisting}[language = C++, numbers=left, 
+        numberstyle=\tiny,keywordstyle=\color{blue!70},
+        commentstyle=\color{red!50!green!50!blue!50},frame=shadowbox,
+        rulesepcolor=\color{red!20!green!20!blue!20},basicstyle=\ttfamily]
+void test() {
+  int x;
+  Stack s;
+  InitStack(s);
+  do {
+    scanf(x);
+    if (x != 0) Push(s, x);
+    else break;
+  } while (true);
+  int sum = 0;
+  printf(sum);
+  while (!StackEmpty(s)) {
+    Pop(s, x);
+    sum += x;
+    printf(sum);
+  }
+}
+      \end{lstlisting}
+    \end{solution}
+\end{enumerate}
+\end{document}

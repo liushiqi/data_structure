@@ -1,0 +1,183 @@
+\documentclass[11pt]{article}
+
+\usepackage[headheight=14pt,a4paper]{geometry}
+\geometry{left=2.0cm,right=2.0cm,top=2.5cm,bottom=2.5cm}
+
+\usepackage[UTF8]{ctex}
+\usepackage{tikz}
+\usepackage{amsfonts,graphicx,amssymb,bm,amsthm}
+\usepackage{algorithm,algorithmicx}
+\usepackage[noend]{algpseudocode}
+\usepackage{fancyhdr}
+\usepackage[fleqn]{amsmath}
+\usepackage{listings}
+\usepackage{fontspec}
+\setmonofont{Fira Code}
+\setCJKfamilyfont{boldkaishu}{FZCuKaiS-R-GB}
+
+\newenvironment{solution}{{\noindent\hskip 2em \bf 解 \quad}}
+
+\renewenvironment{proof}{{\noindent\hskip 2em \bf 证明 \quad}}{\hfill$\qed$\par\vskip1em}
+\newenvironment{proofs}[1]{{\noindent\hskip 2em \bf #1 \quad}}{\hfill$\qed$\par\vskip1em}
+
+\begin{document}
+
+\pagestyle{fancy}
+\rhead{\kaishu 数据结构}
+
+\begin{center}
+  {\LARGE{\bf{数据结构作业}}}\\
+  {\large{\bf{第二次}}}\\
+\end{center}
+
+\begin{flushright}
+  \begin{kaishu}
+    姓名：刘士祺 \\
+    学号：2017K8009929046 \\
+  \end{kaishu}
+\end{flushright}
+
+\begin{enumerate}
+  \item[1.] 习题4-3
+    \begin{enumerate}
+      \item [(1)] 14
+      \item [(2)] 4
+      \item [(3)] "STUDENT"
+      \item [(4)] "O"
+      \item [(5)] "3"
+      \item [(6)] 0
+      \item [(7)] "I AM A WORKER"
+      \item [(8)] "A GOOD STUDENT"
+    \end{enumerate}
+
+  \item[2.] 习题4-4
+    \begin{enumerate}
+      \item{(1)} "THIS SAMPLE IS"
+      \item{(2)} "A GOOD"
+      \item{(3)} "THIS SAMPLE IS A GOOD ONE"
+      \item{(4)} 14
+      \item{(5)} 2
+      \item{(6)} 0
+    \end{enumerate}
+
+  \item[3.] 习题4-8 \\
+    \begin{solution}
+      nextval: \\
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+        \hline A & D & A & B & B & A & D & A & D & A \\
+        \hline -1 & 0 & 0 & 1 & 0 & 0 & 1 & 2 & 3 & 2 \\
+        \hline
+      \end{tabular} \\
+      match step 1: \\
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+        \hline \textbf{A} & D & B & A & D & A & B & B & A & A & B & A & D & A & B & B & A & D & A & D & A \\
+        \hline \textbf{A} & D & A & B & B & A & D & A & D & A &   &   &   &   &   &   &   &   &   &   &   \\
+        \hline
+      \end{tabular} \\
+      match step 2: \\
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+        \hline A & D & \textbf{B} & A & D & A & B & B & A & A & B & A & D & A & B & B & A & D & A & D & A \\
+        \hline A & D & \textbf{A} & B & B & A & D & A & D & A &   &   &   &   &   &   &   &   &   &   &   \\
+        \hline
+      \end{tabular} \\
+      match step 3: \\
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+        \hline A & D & \textbf{B} & A & D & A & B & B & A & A & B & A & D & A & B & B & A & D & A & D & A \\
+        \hline   &   & \textbf{A} & D & A & B & B & A & D & A & D & A &   &   &   &   &   &   &   &   &   \\
+        \hline
+      \end{tabular} \\
+      match step 3: \\
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+        \hline A & D & B & \textbf{A} & D & A & B & B & A & A & B & A & D & A & B & B & A & D & A & D & A \\
+        \hline   &   &   & \textbf{A} & D & A & B & B & A & D & A & D & A &   &   &   &   &   &   &   &   \\
+        \hline
+      \end{tabular} \\
+      match step 4: \\
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+        \hline A & D & B & A & D & A & B & B & A & \textbf{A} & B & A & D & A & B & B & A & D & A & D & A \\
+        \hline   &   &   & A & D & A & B & B & A & \textbf{D} & A & D & A &   &   &   &   &   &   &   &   \\
+        \hline
+      \end{tabular} \\
+      match step 5: \\
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+        \hline A & D & B & A & D & A & B & B & A & \textbf{A} & B & A & D & A & B & B & A & D & A & D & A \\
+        \hline   &   &   &   &   &   &   &   & A & \textbf{D} & A & B & B & A & D & A & D & A &   &   &   \\
+        \hline
+      \end{tabular} \\
+      match step 6: \\
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+        \hline A & D & B & A & D & A & B & B & A & \textbf{A} & B & A & D & A & B & B & A & D & A & D & A \\
+        \hline   &   &   &   &   &   &   &   &   & \textbf{A} & D & A & B & B & A & D & A & D & A &   &   \\
+        \hline
+      \end{tabular} \\
+      match step 7: \\
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+        \hline A & D & B & A & D & A & B & B & A & A & \textbf{B} & A & D & A & B & B & A & D & A & D & A \\
+        \hline   &   &   &   &   &   &   &   &   & A & \textbf{D} & A & B & B & A & D & A & D & A &   &   \\
+        \hline
+      \end{tabular} \\
+      match step 8: \\
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+        \hline A & D & B & A & D & A & B & B & A & A & \textbf{B} & A & D & A & B & B & A & D & A & D & A \\
+        \hline   &   &   &   &   &   &   &   &   &   & \textbf{A} & D & A & B & B & A & D & A & D & A &   \\
+        \hline
+      \end{tabular} \\
+      match step 8: \\
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+        \hline A & D & B & A & D & A & B & B & A & A & B & \textbf{A} & D & A & B & B & A & D & A & D & A \\
+        \hline   &   &   &   &   &   &   &   &   &   &   & \textbf{A} & D & A & B & B & A & D & A & D & A \\
+        \hline
+      \end{tabular} \\
+      match step 8: \\
+      \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+        \hline A & D & B & A & D & A & B & B & A & A & B & A & D & A & B & B & A & D & A & D & \textbf{A} \\
+        \hline   &   &   &   &   &   &   &   &   &   &   & A & D & A & B & B & A & D & A & D & \textbf{A} \\
+        \hline
+      \end{tabular} \\
+      matched.
+    \end{solution}
+
+  \item[4.] 习题5-1
+    \begin{enumerate}
+      \item [(1)] 288
+      \item [(2)] 1282
+      \item [(3)] 1060
+      \item [(4)] 1234
+    \end{enumerate}
+    
+  \item[5.] 习题5-8 \\
+    \begin{solution}
+      $k = (i - 1) * 2 + (1 - j mod 2)$
+    \end{solution}
+    
+  \item[6.] 习题5-11
+    \begin{enumerate}
+      \item [(1)] $GetHead(GetTail(GetTail(L_1)))$
+      \item [(2)] $GetHead(GetHead(GetTail(L_2)))$
+      \item [(3)] $GetHead(GetHead(GetTail(GetTail(GetHead(L_3)))))$
+      \item [(4)] $GetHead(GetHead(GetHead(GetTail(GetTail(L_4)))))$
+      \item [(5)] $GetHead(GetHead(GetTail(GetTail(L_5))))$
+      \item [(6)] $GetHead(GetHead(GetTail(L_6)))$
+      \item [(7)] $GetHead(GetHead(GetTail(GetHead(GetTail(L_7)))))$
+    \end{enumerate}
+    
+  \item[7.] 习题5-12 \\
+    \begin{enumerate}
+      \item [(1)] \input{./5-12-1.tex}
+      \item [(2)] \input{./5-12-2.tex}
+    \end{enumerate}
+    
+  \item[8.] 习题5-15 \\
+    \begin{solution}
+      Haskell code:
+      \begin{lstlisting}[language=haskell, numbers=left, 
+        numberstyle=\tiny,keywordstyle=\color{blue!70},
+        commentstyle=\color{red!50!green!50!blue!50},frame=shadowbox,
+        rulesepcolor=\color{red!20!green!20!blue!20},basicstyle=\ttfamily]
+power (x:xs) = if null xs
+                 then [[], [x]]
+                 else (power xs ++ (map ((:) x) (power xs)))
+      \end{lstlisting}
+    \end{solution}
+\end{enumerate}
+\end{document}

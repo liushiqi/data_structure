@@ -1,0 +1,93 @@
+\documentclass[11pt]{article}
+
+\usepackage[headheight=14pt,a4paper]{geometry}
+\geometry{left=2.0cm,right=2.0cm,top=2.5cm,bottom=2.5cm}
+
+\usepackage[UTF8]{ctex}
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+\usepackage{pstricks}
+\usepackage{amsfonts,graphicx,amssymb,bm,amsthm}
+\usepackage{algorithm,algorithmicx}
+\usepackage[noend]{algpseudocode}
+\usepackage{fancyhdr}
+\usepackage[fleqn]{amsmath}
+\usepackage{listings}
+
+\newenvironment{solution}{{\noindent\hskip 2em \bf 解 \quad}}
+
+\renewenvironment{proof}{{\noindent\hskip 2em \bf 证明 \quad}}{\hfill$\qed$\par\vskip1em}
+\newenvironment{proofs}[1]{{\noindent\hskip 2em \bf #1 \quad}}{\hfill$\qed$\par\vskip1em}
+
+\makeatletter
+
+\let\old@@children\@@children
+\def\@@children{\futurelet\my@next\my@@children}
+\def\my@@children{%
+\ifx\my@next\missing\else
+\expandafter\@gobble
+\fi
+\expandafter\old@@children}
+
+\makeatother
+
+\newcommand{\missing}{ \edge[draw=none]; \node[draw=none]{}; }
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
+
+\begin{document}
+
+\pagestyle{fancy}
+\rhead{\kaishu 数据结构}
+
+\begin{center}
+  {\LARGE{\bf{数据结构作业}}}\\
+  {\large{\bf{第三次}}}\\
+\end{center}
+
+\begin{flushright}
+  \begin{kaishu}
+    姓名：刘士祺 \\
+    学号：2017K8009929046 \\
+  \end{kaishu}
+\end{flushright}
+
+\begin{enumerate}
+  \item[5.] 习题8-1
+    \begin{enumerate}
+      \item [1)]
+        \begin{solution} \\
+          \input{8-1-1.tex}
+        \end{solution}
+      \item [2)]
+        \begin{solution} \\
+          \input{8-1-1.tex}
+        \end{solution}
+    \end{enumerate}
+    
+  \item[6.] 习题8-7
+
+  \item[7.] 习题9-1
+    
+  \item[8.] 习题9-14
+
+  \item[9.] 习题9-19
+
+  \item[10.] 习题9-24
+
+  \item[11.] 习题10-1
+
+  \item[12.] 习题10-3
+
+  \item[13.] 习题10-15
+
+  \item[14.] 习题10-21
+
+  \item[15.] 习题11-1
+
+  \item[16.] 习题11-2
+
+  \item[17.] 习题11-5
+
+  \item[18.] 习题11-11
+\end{enumerate}
+\end{document}
